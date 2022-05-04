@@ -11,7 +11,7 @@ def get_fruityvice_data(this_fruit_choice):
 
 def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
-    my_cur.execute("SELECT * from fruit_load_list")
+    my_cur.execute("select * from fruit_load_list")
     return my_cur.fetchall()
     
 
@@ -47,8 +47,6 @@ try:
 except URLError as e:
   streamlit.error()
 
-#streamlit.stop()
-
 streamlit.header("The fruit load list contains:")
 
 if streamlit.button("Get fruit load list"):
@@ -57,6 +55,8 @@ if streamlit.button("Get fruit load list"):
 
   streamlit.dataframe(my_data_rows)
 
+  
+streamlit.stop()
 add_my_fruit = streamlit.text_input("What fruit would you like to add?", "kiwi")
 streamlit.write("Thanks for adding " + add_my_fruit)
 
